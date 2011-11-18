@@ -1,0 +1,40 @@
+@(title: String, subtitle: String)(content: Html)
+@import play.api.Play.current
+<!DOCTYPE html>
+<html>
+<head>
+<title>@title</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+<script src="@routes.Assets.at("scripts/modernizr.js")" type="text/javascript" charset="utf-8"></script>
+<script src="@routes.Assets.at("scripts/jquery.js")" type="text/javascript" charset="utf-8"></script>
+<script src="@routes.Assets.at("scripts/jquery-ui.js")" type="text/javascript" charset="utf-8"></script>
+<script src="@routes.Assets.at("scripts/init.js")" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<header>
+<div class="logo">@play.api.Play.configuration.getString("application.name")</div>
+</header>
+
+<nav>
+<ul>
+<li class="active"><a href="/">Paste</a></li>
+</ul>
+</nav>
+
+<article class="content">
+<hgroup>
+<h1>@title</h1>
+<h5>@subtitle</h5>
+</hgroup>
+
+@content
+</article>
+
+<footer>
+<p>Copyright ©2011 Lunatech Labs BV</p>
+</footer>
+
+</body>
+</html>
