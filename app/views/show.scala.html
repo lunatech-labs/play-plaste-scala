@@ -1,0 +1,11 @@
+@(paste:models.Paste)
+
+@main(paste.title, "Added on " + paste.pastedAt.format("dd MMMM yyyy")) {
+
+    <section class="box">
+
+    <code>@paste.code</code>
+
+    </section>
+}
+

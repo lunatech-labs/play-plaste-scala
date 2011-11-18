@@ -17,6 +17,23 @@ case class Paste(
 /** Data access helpers. */
 object Paste {
 
+  /** Parses a paste from a ResultSet. */
+  val simple = {
+    get[Pk[Long]]("paste.id") ~/
+    get[String]("paste.title") ~/
+    get[String]("paste.code") ~/
+    get[Date]("paste.pastedAt") ^^ {
+      case id~title~code~pastedAt => Paste(id, title, code, pastedAt)
+    }
+  }
+  
+  /** Find a paste by ID. */
+  def find(id: Long): Paste = {
+    DB.withConnection { implicit connection =>
+      SQL("select * from paste where id = {id}").on('id -> id).as(Paste.simple)
+    }
+  }
+
   /** Inserts a new paste. */
   def insert(paste: Paste) = {
     DB.withConnection { implicit connection =>

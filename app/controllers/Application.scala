@@ -27,14 +27,17 @@ object Application extends Controller {
   /** Validates and saves a new paste. */
   def post = Action {
     implicit request =>
-    Logger.debug("post")
     form.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.index(formWithErrors)),
       paste => {
-        Logger.debug("  paste: %s" format paste.title)
         Paste.insert(paste)
         Ok(paste.title + " (" + paste.pastedAt + ")\n" +  paste.code)
       }
     )
+  }
+
+  /** Render a page for a single post. */
+  def show(id:Long) = Action {
+    Ok(views.html.show(Paste.find(id)))
   }
 }
