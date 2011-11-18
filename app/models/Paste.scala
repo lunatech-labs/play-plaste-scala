@@ -23,7 +23,7 @@ object Paste {
       SQL(
         """
           insert into paste values (
-            (select next value for computer_seq),
+            (select next value for paste_seq),
             {title}, {code}, {pastedAt}
           )
         """
