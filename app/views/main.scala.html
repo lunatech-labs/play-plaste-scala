@@ -4,14 +4,16 @@
 <html>
 <head>
 <title>@title</title>
-<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-<script src="@routes.Assets.at("scripts/modernizr.js")" type="text/javascript" charset="utf-8"></script>
-<script src="@routes.Assets.at("scripts/jquery.js")" type="text/javascript" charset="utf-8"></script>
-<script src="@routes.Assets.at("scripts/jquery-ui.js")" type="text/javascript" charset="utf-8"></script>
-<script src="@routes.Assets.at("scripts/init.js")" type="text/javascript" charset="utf-8"></script>
+<link type="text/css" rel="stylesheet" href="@routes.Assets.at("scripts/google-code-prettify/prettify.css")" />
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<script type="text/javascript" charset="utf-8" src="@routes.Assets.at("scripts/modernizr.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@routes.Assets.at("scripts/jquery.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@routes.Assets.at("scripts/jquery-ui.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@routes.Assets.at("scripts/init.js")"></script>
+<script type="text/javascript" charset="utf-8" src="@routes.Assets.at("scripts/google-code-prettify/prettify.js")"></script>
 </head>
-<body>
+<body onload="prettyPrint()">
 
 <header>
 <div class="logo">@current.configuration.getString("application.name")</div>
