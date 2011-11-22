@@ -10,21 +10,17 @@
 
     <section class="box">
 
-    @for(error <- form.errors) {
-        <p class="error">@error.key - @Messages(error.message)</p>
-    }
-
     <form class="" method="post" action="@routes.Application.post">
 
     <div>
         <label for="paste.title">Title</label>
-        <input id="paste.title" name='@form("title").name' value="" class="title">
+        <input id="paste.title" name='@form("title").name' value="@form("title").value" class="title">
         @errors(form("title"))
     </div>
 
     <div>
         <label for="paste.code">Code</label>
-        <textarea id="paste.code" name='@form("code").name' rows="30" class=""></textarea>
+        <textarea id="paste.code" name='@form("code").name' rows="30" class="">@form("code").value</textarea>
         @errors(form("code"))
     </div>
 
