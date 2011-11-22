@@ -1,5 +1,6 @@
 GET  /                           controllers.Application.index()
 POST /                           controllers.Application.post()
+GET  /history                    controllers.Application.history()
 GET  /:id                        controllers.Application.show(id:Long)
 
 GET  /assets/*file               controllers.Assets.at(path="/public", file)

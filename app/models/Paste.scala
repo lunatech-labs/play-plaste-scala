@@ -35,6 +35,13 @@ object Paste {
     }
   }
 
+  /** Fetch all pastes. */
+  def list(): Seq[Paste] = {
+    DB.withConnection { implicit connection =>
+      SQL("select * from paste order by pastedAt desc").as(Paste.simple *)
+    }
+  }
+
   /** Inserts a new paste and returns its generated ID. */
   def create(paste: Paste): Option[Long] = {
     DB.withConnection { implicit connection =>

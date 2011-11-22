@@ -1,0 +1,15 @@
+@(pastes:Seq[models.Paste])
+
+@main("Paste history", "%d pastes" format pastes.size) {
+
+    <section class="box">
+
+    @for( (date, dayPastes) <- pastes.groupBy(_.pastedAt.format("dd MMMM yyyy"))) {
+        <h2>@(if(date == new java.util.Date().format("dd MMMM yyyy")) "today" else date)</h2>
+        @for(paste <- dayPastes.reverse) {
+            <p><a href="@routes.Application.show(paste.id.get)">@paste.title</a></p>
+        }
+    }
+    </section>
+}
+

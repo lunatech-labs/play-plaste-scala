@@ -47,11 +47,16 @@
     .content hgroup h1 {
         font-family: @typeface-brand;
         padding-bottom: @line/8;
-        }      
+        }
+    h2 {
+        color: @grey5;
+        font-size: @em;
+        margin-bottom: @em/2;
+    }
     .content hgroup h5 {
         .h6;
         color: @grey5;
-        }  
+        }
     .content > section {
         margin-top: @line;
         margin-right: @block;
@@ -197,57 +202,8 @@
         background-color: @light-color;
         .box-shadow();
         }
-        
-    .panel-box {
-        .box;
-        .text-shadow(@l,@light-color);
-        background-color: @grey1;
-        }
-    .panel-box header {
-        .panel-inset;
-        .rounded-corners-top();
-        .gradient(@light-color,@grey2);
-        }
-    .panel-box footer {
-        .panel-inset;
-        .rounded-corners-bottom();
-        background-color: @grey2;
-        }
-    .panel-box header ~ section {
-        padding: @line 0;
-        }
-    .highlighted {
-        background-color: @yellow1;
-        .gradient(@yellow1,@yellow2);
-        }
-    .highlighted header {
-        color: @light-color;
-        .text-shadow(0 - @l,@dark-color);
-        .gradient(@grey5,@grey6);
-        }
 
-    .examples {
-        width: 100% !important;
-        }
-    .examples ul {
-        margin: 0;
-        .display-box();
-        }
-    .examples li {
-        position: relative;
-        display: block;
-        .box-flex();
-        margin-left: @w;
-        }
-    .examples .box:after {
-        .icon(@line*1.6,94%);
-        .ui-icon-script;
-        .opacity(0.3);
-        }
-    .examples .box:first-child {
-        margin-left: 0;
-        }
-    
+
 /* Code */
 
     code {

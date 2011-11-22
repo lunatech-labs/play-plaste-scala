@@ -20,6 +20,12 @@ object Application extends Controller {
     )
   )
 
+  /** Renders a page that shows a history list of pastes. */
+  def history = Action {
+    implicit request =>
+    Ok(views.html.history(Paste.list()))
+  }
+
   /** Renders a page for submitting a new paste. */
   def index = Action {
     Ok(views.html.index(form))
