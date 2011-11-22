@@ -1,11 +1,13 @@
 @(paste:models.Paste)
 
-@main(paste.title, "Added on " + paste.pastedAt.format("dd MMMM yyyy")) {
+@navigation = {
+    <li class="active"><a href="@routes.Application.show(paste.id.get)">Paste</a></li>
+}
+
+@main(paste.title, "Added on " + paste.pastedAt.format("dd MMMM yyyy"), navigation) {
 
     <section class="box">
-
     <code class="prettyprint">@paste.code</code>
-
     </section>
 }
 

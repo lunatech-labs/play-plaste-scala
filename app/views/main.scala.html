@@ -1,9 +1,9 @@
-@(title: String, subtitle: String)(content: Html)
+@(title: String, subtitle: String, navigation: => Html = Html(""))(content: Html)
 @import play.api.Play.current
 <!DOCTYPE html>
 <html>
 <head>
-<title>@title</title>
+<title>@title - Plaste</title>
 <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 <link type="text/css" rel="stylesheet" href="@routes.Assets.at("scripts/google-code-prettify/prettify.css")" />
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
@@ -21,7 +21,8 @@
 
 <nav>
 <ul>
-<li class="active"><a href="/">Paste</a></li>
+<li class="@(if (navigation == "") "active")"><a href="@routes.Application.index()">New</a></li>
+@navigation
 </ul>
 </nav>
 
