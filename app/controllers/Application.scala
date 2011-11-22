@@ -2,6 +2,7 @@ package controllers
 
 import play.api.data._
 import play.api.mvc._
+import play.api.mvc.Results.Redirect
 import models.Paste
 import play.api.Logger
 import java.util.Date
@@ -30,8 +31,11 @@ object Application extends Controller {
     form.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.index(formWithErrors)),
       paste => {
-        Paste.insert(paste)
-        Ok(paste.title + " (" + paste.pastedAt + ")\n" +  paste.code)
+        val newPaste = Paste.create(paste)
+        newPaste match {
+          case None => Ok("No ID returned")
+          case Some(id) => Redirect(routes.Application.show(id))
+        }
       }
     )
   }

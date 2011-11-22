@@ -5,6 +5,7 @@ import anorm._
 import anorm.SqlParser._
 import play.api.db.DB
 import play.api.Play.current
+import play.api.Logger
 
 /** A content snippet, typically a code sample, as text or a binary attachment. */
 case class Paste(
@@ -34,10 +35,10 @@ object Paste {
     }
   }
 
-  /** Inserts a new paste. */
-  def insert(paste: Paste) = {
+  /** Inserts a new paste and returns its generated ID. */
+  def create(paste: Paste): Option[Long] = {
     DB.withConnection { implicit connection =>
-      SQL(
+      val query = SQL(
         """
           insert into paste values (
             (select next value for paste_seq),
@@ -48,7 +49,11 @@ object Paste {
         'title -> paste.title,
         'code -> paste.code,
         'pastedAt -> paste.pastedAt
-      ).executeUpdate()
+      )
+
+      val (statement, ok) = query.execute1(getGeneratedKeys = true)
+      val results = statement.getGeneratedKeys()
+      if (results.next()) Some(results.getLong(1)) else None
     }
   }
 }

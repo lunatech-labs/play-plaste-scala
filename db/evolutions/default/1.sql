@@ -7,7 +7,7 @@ set ignorecase true;
 create table paste (
   id bigint not null,
   title varchar(255) not null,
-  code varchar(255) not null,
+  code clob not null,
   pastedAt timestamp,
   constraint pk_paste primary key (id))
 ;
