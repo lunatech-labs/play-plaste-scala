@@ -5,7 +5,6 @@ import anorm._
 import anorm.SqlParser._
 import play.api.db.DB
 import play.api.Play.current
-import play.api.Logger
 
 /** A content snippet, typically a code sample, as text or a binary attachment. */
 case class Paste(
@@ -58,6 +57,8 @@ object Paste {
         'pastedAt -> paste.pastedAt
       )
 
+      // Extract the generated ID.
+      // TODO: find a nicer way to do this, using a SQL parser or Magic.
       val (statement, ok) = query.execute1(getGeneratedKeys = true)
       val results = statement.getGeneratedKeys()
       if (results.next()) Some(results.getLong(1)) else None

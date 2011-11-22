@@ -21,6 +21,7 @@
 
 <nav>
 <ul>
+<!-- TODO Check request.path against the reverse route instead of checking the title. -->
 <li class="@(if (title == "New paste") "active")"><a href="@routes.Application.index()">New</a></li>
 <li class="@(if (title == "Paste history") "active")"><a href="@routes.Application.history()">History</a></li>
 @navigation
